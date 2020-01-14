@@ -1,0 +1,72 @@
+{"properties": [
+  {
+    "name": "NotEmpty.cliente.nombre",
+    "type": "java.lang.String",
+    "description": "A description for 'NotEmpty.cliente.nombre'"
+  },
+  {
+    "name": "NotEmpty.cliente.apellido",
+    "type": "java.lang.String",
+    "description": "A description for 'NotEmpty.cliente.apellido'"
+  },
+  {
+    "name": "NotEmpty.cliente.email",
+    "type": "java.lang.String",
+    "description": "A description for 'NotEmpty.cliente.email'"
+  },
+  {
+    "name": "Email.cliente.email",
+    "type": "java.lang.String",
+    "description": "A description for 'Email.cliente.email'"
+  },
+  {
+    "name": "typeMismatch.cliente.createAd",
+    "type": "java.lang.String",
+    "description": "A description for 'typeMismatch.cliente.createAd'"
+  },
+  {
+    "name": "NotNull.cliente.createdAt",
+    "type": "java.lang.String",
+    "description": "A description for 'NotNull.cliente.createdAt'"
+  },
+  {
+    "name": "NotNull.cliente.createdAt",
+    "type": "java.lang.String",
+    "description": "A description for 'NotNull.cliente.createdAt'"
+  },
+  {
+    "name": "NotNull.cliente.createdAt",
+    "type": "java.lang.String",
+    "description": "A description for 'NotNull.cliente.createdAt'"
+  },
+  {
+    "name": "NotNull.cliente.createdAt",
+    "type": "java.lang.String",
+    "description": "A description for 'NotNull.cliente.createdAt'"
+  },
+  {
+    "name": "NotNull.cliente.createdAt",
+    "type": "java.lang.String",
+    "description": "A description for 'NotNull.cliente.createdAt'"
+  },
+  {
+    "name": "java.runtime.version",
+    "type": "java.lang.String",
+    "description": "A description for 'java.runtime.version'"
+  },
+  {
+    "name": "maven.version",
+    "type": "java.lang.String",
+    "description": "A description for 'maven.version'"
+  },
+  {
+    "name": "java.runtime.version",
+    "type": "java.lang.String",
+    "description": "A description for 'java.runtime.version'"
+  },
+  {
+    "name": "maven.version",
+    "type": "java.lang.String",
+    "description": "A description for 'maven.version'"
+  }
+]}

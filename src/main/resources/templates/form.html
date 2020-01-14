@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <header th:replace="layout/layout :: header"></header>
+            <main>
+                <form class="form" th:action="@{/form}" th:object="${cliente}" method="POST" enctype="multipart/form-data">
+                    <table class="table is-striped">
+                        <tr>
+                            <td th:text="#{text.cliente.nombre}">Nombre</td>
+                            <td> <input th:field="*{nombre}" class="input is-rounded" type="text" name="nombre"
+                                    placeholder="Fran">
+                                <small style="color: red;" th:errors="*{nombre}"></small></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.cliente.apellido}" >Apellido</td>
+                            <td> <input th:field="*{apellido}" class="input is-rounded" type="text" name="apellido"
+                                    placeholder="Jiménez">
+                                <small style="color: red;" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.cliente.email}">Email</td>
+                            <td> <input th:field="*{email}" class="input is-rounded" type="text" name="email" placeholder="example@example.com" >
+                            <small style="color: red;"th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.factura.ver.fecha}">Fecha</td>
+                            <td> <input class="input is-rounded" type="text" th:field="*{createdAt}" placeholder="yyyy-mm-dd" >
+                            <small style="color: red;" th:if="${#fields.hasErrors('createdAt')}" th:errors="*{createdAt}"></small></td>
+                        </tr>
+                        <tr>
+                            <td th:text="#{text.form.foto}">Foto</td>
+                            <td> <input class="file is-rounded" type="file" name="file"> </td>
+                        </tr>
+                        <tr>
+                            <td><button th:text="#{text.form.enviar}" class="button is-success is-rounded" type="submit">Enviar</button></td>
+                            <td><button th:text="#{text.form.borrar}" class="button is-warning is-rounded" type="reset">Borrar</button></td>
+                        </tr>
+                    </table>
+                </form>
+                <a class="button is-danger" th:text="#{text.form.cancelar}" th:href="@{/listar}">Cancelar</a>
+            </main>
+            <footer th:fragment="footer"></footer>
+        </div>
+    </section>
+    <footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

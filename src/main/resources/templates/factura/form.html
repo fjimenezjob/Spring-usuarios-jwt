@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <header th:replace="layout/layout :: header"></header>
+            <div class="card">
+                <div class="columns">
+                    <div class="container">
+                        <form th:action="@{/factura/form/}" th:object="${factura}" method="POST">
+                            <div class="field">
+                                <div class="control">
+
+                                    <label class="label">Cliente: </label>
+                                    <input class="input is-rounded"
+                                        th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}"
+                                        disabled='disabled' />
+
+                                    <label class="label">Descripcion:</label>
+                                    <textarea class="textarea is-info" th:field="*{descripcion}"
+                                        placeholder="Descripcion..." th:errorclass="'input is-dagner'"></textarea>
+                                        <div class="message is-dagner" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{'descripcion'}" ></div>
+
+                                    <label class="label">Observaciones: </label>
+                                    <textarea class="textarea is-info" th:field="*{observacion}"
+                                        placeholder="Observaciones..."></textarea>
+
+                                    <label class="label">Buscar Producto: </label>
+                                    <input class="select is-rounded is-info" name="buscar_producto"
+                                        id="buscar_producto">
+                                    <table th:replace="factura/plantilla-items :: itemsFactura"></table>
+                                    <br><br>
+                                    <button class="button is-rounded" th:value="${titulo}" type="submit">Crear
+                                        Factura</button> <br><br>
+                                    </div>
+                                </div>
+                                <table id="cargarItemProductos" class="table is-striped is-bordered is-hoverable is-fullwidth">
+                                    <thead>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Total</th>
+                                        <th>Eliminar</th>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Aqui se mete las filas de los productos automaticamente a traves del js -->
+                                    </tbody>
+                                </table>
+                            </div>
+                </div>
+                <a href="#" class="button is-warning is-pulled-right">
+                    <h5>TOTAL: <span id="gran_total">0</span>€</h5>
+                </form>
+                </a>
+            </div>
+        <div class="content has-text-centered">
+            <a th:href="@{/ver/} + ${factura.cliente.id}"><button
+                class="button is-success is-rounded">Volver</button></a>
+            </div>
+        </div>
+    </section>
+    <footer th:replace="layout/layout :: footer"></footer>
+    <script th:replace="factura/js/autocomplete-productos :: javascript"></script>
+
+</body>

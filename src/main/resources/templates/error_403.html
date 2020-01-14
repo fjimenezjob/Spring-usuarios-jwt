@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+<body>
+    <section class="section">
+      <div class="container">
+            <div class="card ">
+                <div class="card-image level-left">
+                  <figure>
+                    <img style="width: 300px; height: 150px;" src="https://previews.123rf.com/images/roxanabalint/roxanabalint1702/roxanabalint170200243/71263483-acceso-denegado-la-muestra-del-metal-oxidado-de-la-vendimia-en-un-fondo-blanco-ilustraci%C3%B3n-vectorial.jpg" alt="Placeholder image">
+                  </figure>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content  has-text-centered">
+                        <p><strong>Usuario: </strong><p sec:authentication="name"></p></p>
+                        <p><strong>Autorización: </strong> <p sec:authentication="principal.authorities"></p></p>
+                    </div>
+                  </div>
+
+                  <div class="content  has-text-centered level-right">
+                   <p style="color:red;"> No tiene los permisos suficientes para acceder a esta parte de la web, por favor contacte con su administrador. </p><br><br>
+                    <p><a class="button is-primary" th:href="@{/listar}">Volver</a></p>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </section>
