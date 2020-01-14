@@ -50,7 +50,6 @@
                                 <div sec:authorize="isAuthenticated()" class="buttons">
                                     <a class="button is-primary" sec:authentication="name"></a>
                                     <form id="logoutForm" th:action="@{/logout}" method="POST">
-                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                                         <button th:text="#{text.layout.nav.cerrarSesion}" onclick="document.getElementById('logoutForm').submit();" type="submit"
                                             class="button is-danger"></button>
                                     </form>

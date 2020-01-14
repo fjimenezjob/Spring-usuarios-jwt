@@ -6,8 +6,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.lluviadeideas.jwt.auth.JWTAuthenticationFilter;
 import com.lluviadeideas.jwt.models.service.JpaUserDetailsService;
 
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -20,7 +22,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JpaUserDetailsService userDetailsService;
 
-
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
 
@@ -29,14 +30,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar**", "/locale", "/api/clientes/**").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin().loginPage("/login")
-        .permitAll()
-        .and()
-        .logout().permitAll()
-        .and()
-        .exceptionHandling().accessDeniedPage("/error_403");
+        http.authorizeRequests().antMatchers("/", "/css/**", "/js/**", "/images/**", "/listar**", "/locale").permitAll()
+                .anyRequest().authenticated().
+                and().
+                addFilter(new JWTAuthenticationFilter(authenticationManager()))
+                .csrf().disable().
+                sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }
